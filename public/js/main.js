@@ -60,7 +60,7 @@
 
 	__webpack_require__(3);
 
-	angular.module('roundAbout', ['ng-admin']).config(['NgAdminConfigurationProvider', nga => {
+	angular.module('formulationTool', ['ng-admin']).config(['NgAdminConfigurationProvider', nga => {
 	  const admin = nga.application('formulationTool');
 
 	  const clients = __webpack_require__(4)(nga, admin);

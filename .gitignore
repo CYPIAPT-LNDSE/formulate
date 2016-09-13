@@ -2,6 +2,7 @@
 node_modules
 config.env
 data
+.dpd/pids
 
 # Logs
 logs
