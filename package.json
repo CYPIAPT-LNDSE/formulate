@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/RoundaboutSheffield/Roundabout#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "deployd": "^0.8.9",
     "env2": "^2.1.1",
     "jquery": "^3.1.0"
