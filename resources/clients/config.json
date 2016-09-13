@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"firstName": {
+			"name": "firstName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "firstName",
+			"order": 0
+		},
+		"lastName": {
+			"name": "lastName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "lastName",
+			"order": 1
+		},
+		"symptoms": {
+			"name": "symptoms",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "symptoms",
+			"order": 2
+		}
+	}
+}

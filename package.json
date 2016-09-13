@@ -1,0 +1,47 @@
+{
+  "name": "formulationTool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "dpd",
+    "build": "webpack",
+    "webpack-watch": "webpack --watch",
+    "watch": "npm-run-all --parallel dev webpack-watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoundaboutSheffield/Roundabout.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RoundaboutSheffield/Roundabout/issues"
+  },
+  "homepage": "https://github.com/RoundaboutSheffield/Roundabout#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "deployd": "^0.8.9",
+    "env2": "^2.1.1",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "browser-sync": "^2.14.3",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "css-loader": "^0.24.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jquery": "^3.1.0",
+    "moment": "^2.14.1",
+    "ng-admin": "^1.0.0-alpha2",
+    "npm-run-all": "^3.0.0",
+    "webpack": "^1.13.2",
+    "webpack-node-externals": "^1.3.3"
+  }
+}

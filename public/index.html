@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        Username:
+        <input type="text" name="username" />
+      </label>
+      <label>
+        Password:
+        <input type="password" name="password" />
+      </label>
+      <input type="submit" value="Login" />
+    </form>
+    <script type="text/javascript" src="dpd.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var form = document.querySelector('form');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var target = event.target;
+        var username = target.username.value;
+        var password = target.password.value;
+
+        dpd
+          .users
+          .login({
+            username: username,
+            password: password
+          })
+          .then(function(e){
+            location.pathname = '/app.html';
+          })
+          .fail(function(error){
+            alert(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>
