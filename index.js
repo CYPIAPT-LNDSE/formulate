@@ -3,7 +3,7 @@ const deployd = require('deployd');
 const options = {
   port: process.env.PORT || 8080,
   db: {
-    connectionString: process.env.MONGO_URI || 'mongodb://localhost:27017',
+    connectionString: process.env.MONGODB_URI || 'mongodb://localhost:27017',
   },
 };
 
