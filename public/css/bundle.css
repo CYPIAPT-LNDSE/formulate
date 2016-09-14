@@ -1,0 +1,39 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700|Source+Sans+Pro:200,300,400,600,700';
+body {
+  background-color: #ffffff; }
+
+.form-signin-heading {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 65px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #037C93;
+  font-weight: 800; }
+
+.form-signin {
+  padding-top: 30px;
+  padding-left: 30%;
+  padding-right: 30%; }
+
+.sign-in-btn {
+  background-color: #2E8898;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'Source Sans Pro', sans-serif; }
+
+.sign-in-btn:hover {
+  background-color: #5F97A2;
+  color: #ffffff; }
+
+.logo-container {
+  width: 100%;
+  padding-top: 2em; }
+
+.logo {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.form-control {
+  height: 40px; }
