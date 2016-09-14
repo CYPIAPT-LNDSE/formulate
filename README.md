@@ -1,6 +1,6 @@
 # Formulate!
 
-Formulate is a tool created by [@gabrielperales](https://github.com/gabrielperales), [@mcelearr](https://github.com/mcelearr) and [@TroyMaeder](https://github.com/TroyMaeder) for the Anna Freud Centre, a child mental health research, training and treatment centre based in London.
+Formulate is a tool created by [@gabrielperales](https://github.com/gabrielperales), [@mcelearr](https://github.com/mcelearr) and [@TroyMaeder](https://github.com/TroyMaeder), [@shadows666](https://github.com/Shadows666) for the Anna Freud Centre, a child mental health research, training and treatment centre based in London.
 
 ## The problem
 
