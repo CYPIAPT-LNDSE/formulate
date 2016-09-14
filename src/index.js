@@ -1,6 +1,6 @@
 require('ng-admin');
 
-angular.module('roundAbout', ['ng-admin'])
+angular.module('formulationTool', ['ng-admin'])
   .config(['NgAdminConfigurationProvider', nga => {
     const admin = nga.application('formulationTool');
 
