@@ -17,13 +17,21 @@
 			"id": "lastName",
 			"order": 1
 		},
-		"symptoms": {
-			"name": "symptoms",
-			"type": "array",
-			"typeLabel": "array",
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "symptoms",
+			"id": "description",
 			"order": 2
+		},
+		"graph": {
+			"name": "graph",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "graph",
+			"order": 3
 		}
 	}
 }

@@ -1,3 +1,5 @@
+const graphTemplate = require('../templates/graphTypeTemplate');
+
 module.exports = (nga, admin) => {
   const contact = nga.entity('clients');
 
@@ -7,6 +9,9 @@ module.exports = (nga, admin) => {
         required: true,
       }),
     nga.field('lastName'),
+    nga.field('description', 'text'),
+    nga.field('graph')
+    .template(graphTemplate),
   ];
 
   contact
