@@ -9,7 +9,9 @@
     "build": "webpack",
     "webpack-watch": "webpack --watch",
     "watch": "npm-run-all --parallel dev webpack-watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "node-sass ./src/style/main.scss ./public/bundle.css",
+    "watch:css": "nodemon -e scss -x 'npm run build:css'"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,9 @@
     "deployd": "^0.8.9",
     "env2": "^2.1.1",
     "eslint-config-airbnb": "^11.1.0",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "node-sass": "^3.10.0",
+    "sass": "^0.5.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",

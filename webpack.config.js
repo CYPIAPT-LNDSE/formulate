@@ -3,6 +3,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const sources = [
   './node_modules/ng-admin/build/ng-admin-only.min.css',
+  './src/style/main.scss',
   './src/index.js',
 ];
 
