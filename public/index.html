@@ -35,10 +35,7 @@
   var login = document.getElementById('login');
   var register = document.getElementById('register');
 
-  login.addEventListener('click', function(event) {
-    var username = form.username.value;
-    var password = form.password.value;
-    event.preventDefault();
+  var loginUser = function(username, password) {
     dpd
       .users
       .login({
@@ -51,6 +48,13 @@
       .fail(function(error){
         alert(error.message);
       });
+  }
+
+  login.addEventListener('click', function(event) {
+    var username = form.username.value;
+    var password = form.password.value;
+    event.preventDefault();
+    loginUser(username, password);
   });
 
   register.addEventListener('click', function(event) {
@@ -61,18 +65,7 @@
     dpd.users.post({username: username, password: password}, function(user, err) {
       event.preventDefault();
       if(err) return console.log(err);
-      dpd
-      .users
-        .login({
-          username: username,
-          password: password
-        })
-        .then(function(e){
-          location.pathname = '/app.html';
-        })
-        .fail(function(error){
-          alert(error.message);
-        });
+      loginUser(username, password);
       });
     });
   </script>
