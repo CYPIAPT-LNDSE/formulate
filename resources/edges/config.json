@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"clientId": {
+			"name": "clientId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "clientId",
+			"order": 0
+		},
+		"fromId": {
+			"name": "fromId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "fromId",
+			"order": 1
+		},
+		"toId": {
+			"name": "toId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "toId",
+			"order": 2
+		}
+	}
+}
