@@ -24,21 +24,21 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Password" required>
       </div>
-      <button class="btn btn-md btn-block sign-in-btn" class="button" type="submit">Sign in</button>
-      <button class="btn btn-md btn-block sign-in-btn" class="button" type="submit">Register</button>
+      <button class="btn btn-md btn-block sign-in-btn" class="button" id="login" type="submit">Sign in</button>
+      <button class="btn btn-md btn-block sign-in-btn" class="button" id="register" type="submit">Register</button>
     </form>
 
   </div>
   <script type="text/javascript" src="dpd.js"></script>
   <script type="text/javascript" charset="utf-8">
   var form = document.querySelector('form');
+  var login = document.getElementById('login');
+  var register = document.getElementById('register');
 
-  form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  var target = event.target;
-  var username = target.username.value;
-  var password = target.password.value;
-
+  login.addEventListener('click', function(event) {
+    var username = form.username.value;
+    var password = form.password.value;
+    event.preventDefault();
     dpd
       .users
       .login({
@@ -52,6 +52,29 @@
         alert(error.message);
       });
   });
+
+  register.addEventListener('click', function(event) {
+    var username = form.username.value;
+    var password = form.password.value;
+    event.preventDefault();
+
+    dpd.users.post({username: username, password: password}, function(user, err) {
+      event.preventDefault();
+      if(err) return console.log(err);
+      dpd
+      .users
+        .login({
+          username: username,
+          password: password
+        })
+        .then(function(e){
+          location.pathname = '/app.html';
+        })
+        .fail(function(error){
+          alert(error.message);
+        });
+      });
+    });
   </script>
 </body>
 </html>
