@@ -24,6 +24,22 @@
 			"required": false,
 			"id": "type",
 			"order": 2
+		},
+		"x": {
+			"name": "x",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "x",
+			"order": 3
+		},
+		"y": {
+			"name": "y",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "y",
+			"order": 4
 		}
 	}
 }

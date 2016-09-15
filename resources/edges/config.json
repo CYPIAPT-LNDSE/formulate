@@ -9,20 +9,20 @@
 			"id": "clientId",
 			"order": 0
 		},
-		"fromId": {
-			"name": "fromId",
+		"source": {
+			"name": "source",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "fromId",
+			"id": "source",
 			"order": 1
 		},
-		"toId": {
-			"name": "toId",
+		"target": {
+			"name": "target",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "toId",
+			"id": "target",
 			"order": 2
 		}
 	}
