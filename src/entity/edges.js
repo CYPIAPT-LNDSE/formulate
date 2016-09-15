@@ -5,19 +5,14 @@ module.exports = (nga, admin) => {
     nga.field('source', 'reference')
       .targetEntity(nga.entity('nodes'))
       .targetField(nga.field('name'))
-      .validation({
-        required: true,
-      }),
+      .validation({ required: true }),
     nga.field('target', 'reference')
       .targetEntity(nga.entity('nodes'))
       .targetField(nga.field('name'))
-      .validation({
-        required: true,
-      }),
+      .validation({ required: true }),
     nga.field('clientId')
-      .validation({
-        required: true,
-      }),
+      .cssClasses('hidden')
+      .label(''),
   ];
 
   edges

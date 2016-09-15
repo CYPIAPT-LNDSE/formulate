@@ -64,7 +64,9 @@ module.exports = app => {
       });
 
       dragListener.bind('dragend', function(event) {
+        const { node } = event.data;
         console.log(event);
+        $http.put(`/nodes/${ node.id }`, node);
       });
 
       element.on('$destroy', () => s.graph.clear());

@@ -65,9 +65,9 @@
 	var app = angular.module('formulationTool', ['ng-admin']).config(['NgAdminConfigurationProvider', function (nga) {
 	  var admin = nga.application('formulationTool');
 
-	  __webpack_require__(9)(nga, admin);
-	  var clients = __webpack_require__(10)(nga, admin);
-	  __webpack_require__(11)(nga, admin);
+	  __webpack_require__(4)(nga, admin);
+	  var clients = __webpack_require__(5)(nga, admin);
+	  __webpack_require__(6)(nga, admin);
 
 	  nga.configure(admin);
 
@@ -130,7 +130,7 @@
 	  });
 	}]);
 
-	__webpack_require__(13)(app);
+	__webpack_require__(7)(app);
 
 /***/ },
 /* 3 */
@@ -253,12 +253,7 @@
 	//# sourceMappingURL=ng-admin.min.js.map
 
 /***/ },
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -266,13 +261,7 @@
 	module.exports = function (nga, admin) {
 	  var edges = nga.entity('edges');
 
-	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({
-	    required: true
-	  }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({
-	    required: true
-	  }), nga.field('clientId').validation({
-	    required: true
-	  })];
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  edges.listView().fields([nga.field('id')].concat(fields)).filters(fields);
 
@@ -286,7 +275,7 @@
 	};
 
 /***/ },
-/* 10 */
+/* 5 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -310,7 +299,7 @@
 	};
 
 /***/ },
-/* 11 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -318,9 +307,7 @@
 	module.exports = function (nga, admin) {
 	  var node = nga.entity('nodes');
 
-	  var fields = [nga.field('name'), nga.field('clientId').validation({
-	    required: true
-	  }), nga.field('type', 'choice').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }])];
+	  var fields = [nga.field('name'), nga.field('type', 'choice').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').label('Strength').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  node.listView().fields([nga.field('id')].concat(fields)).filters(fields);
 
@@ -334,8 +321,7 @@
 	};
 
 /***/ },
-/* 12 */,
-/* 13 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -407,7 +393,10 @@
 	        });
 
 	        dragListener.bind('dragend', function (event) {
+	          var node = event.data.node;
+
 	          console.log(event);
+	          $http.put('/nodes/' + node.id, node);
 	        });
 
 	        element.on('$destroy', function () {

@@ -17,13 +17,29 @@
 			"id": "name",
 			"order": 1
 		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 2
+		},
 		"type": {
 			"name": "type",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "type",
-			"order": 2
+			"order": 3
+		},
+		"size": {
+			"name": "size",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "size",
+			"order": 4
 		},
 		"x": {
 			"name": "x",
@@ -31,7 +47,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "x",
-			"order": 3
+			"order": 5
 		},
 		"y": {
 			"name": "y",
@@ -39,7 +55,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "y",
-			"order": 4
+			"order": 6
 		}
 	}
 }
