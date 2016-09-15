@@ -269,7 +269,7 @@
 	    return false;
 	  }]);
 
-	  edges.editionView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  edges.editionView().title('Edit: {{ entry.values.connection }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;
@@ -297,7 +297,7 @@
 
 	  contact.creationView().fields(fields);
 
-	  contact.editionView().fields([].concat(fields, [nga.field('description', 'text'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'), nga.field('').label('Graph').template('<graph clientid="{{ entry.values.id }}"/>')]));
+	  contact.editionView().title('Edit: {{ entry.values.fullName }}').fields([].concat(fields, [nga.field('description', 'text'), nga.field('').label('Graph').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Relations', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('source'), nga.field('target'), nga.field('size').label('Strength')]).listActions(['edit', 'delete'])]));
 
 	  admin.addEntity(contact);
 
@@ -321,7 +321,7 @@
 	    return false;
 	  }]);
 
-	  node.editionView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  node.editionView().title('Edit: {{ entry.values.name }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;

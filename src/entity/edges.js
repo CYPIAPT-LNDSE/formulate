@@ -39,6 +39,7 @@ module.exports = (nga, admin) => {
 
   edges
     .editionView()
+    .title('Edit: {{ entry.values.connection }}')
     .fields(fields)
     .actions(['back'])
     .onSubmitSuccess(['progression', 'route', '$state', 'entry',

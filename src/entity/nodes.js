@@ -99,6 +99,7 @@ module.exports = (nga, admin) => {
 
   node
     .editionView()
+    .title('Edit: {{ entry.values.name }}')
     .fields(fields)
     .actions(['back'])
     .onSubmitSuccess(['progression', 'route', '$state', 'entry',
