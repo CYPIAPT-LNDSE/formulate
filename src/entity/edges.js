@@ -18,7 +18,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('clientId')
       .cssClasses('hidden')
       .label(''),
