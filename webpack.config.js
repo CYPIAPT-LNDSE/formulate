@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const sources = [
-  './node_modules/ng-admin/build/ng-admin-only.min.css',
+  './node_modules/ng-admin/build/ng-admin.min.css',
   './src/index.js',
 ];
 
@@ -14,7 +14,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.js/, exclude: /node_modules\/(?!admin-config)/, loader: 'babel' },
       { test: /\.html$/, loader: 'html' },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('css') },
     ],

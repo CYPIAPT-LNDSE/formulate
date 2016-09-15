@@ -1,10 +1,12 @@
 require('ng-admin');
 
-angular.module('formulationTool', ['ng-admin'])
+const app = angular.module('formulationTool', ['ng-admin'])
   .config(['NgAdminConfigurationProvider', nga => {
     const admin = nga.application('formulationTool');
 
+    require('./entity/edges')(nga, admin);
     const clients = require('./entity/clients')(nga, admin);
+    require('./entity/nodes')(nga, admin);
 
     nga.configure(admin);
 
@@ -70,3 +72,5 @@ angular.module('formulationTool', ['ng-admin'])
         return { params };
       });
   }]);
+
+require('./directives/graph')(app);

@@ -1,5 +1,3 @@
-const graphTemplate = require('../templates/graphTypeTemplate');
-
 module.exports = (nga, admin) => {
   const contact = nga.entity('clients');
 
@@ -9,9 +7,6 @@ module.exports = (nga, admin) => {
         required: true,
       }),
     nga.field('lastName'),
-    nga.field('description', 'text'),
-    nga.field('graph')
-    .template(graphTemplate),
   ];
 
   contact
@@ -24,7 +19,17 @@ module.exports = (nga, admin) => {
 
   contact.creationView().fields(fields);
 
-  contact.editionView().fields(fields);
+  contact.editionView().fields([
+    ...fields,
+    nga.field('description', 'text'),
+    nga.field('').label('')
+      .template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'),
+    nga.field('').label('')
+      .template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'),
+    nga.field('')
+      .label('Graph')
+      .template('<graph clientid="{{ entry.values.id }}"/>'),
+  ]);
 
   admin
     .addEntity(contact);

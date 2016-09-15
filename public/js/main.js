@@ -58,31 +58,39 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	__webpack_require__(3);
 
-	angular.module('formulationTool', ['ng-admin']).config(['NgAdminConfigurationProvider', nga => {
-	  const admin = nga.application('formulationTool');
+	var app = angular.module('formulationTool', ['ng-admin']).config(['NgAdminConfigurationProvider', function (nga) {
+	  var admin = nga.application('formulationTool');
 
-	  const clients = __webpack_require__(4)(nga, admin);
+	  __webpack_require__(4)(nga, admin);
+	  var clients = __webpack_require__(5)(nga, admin);
+	  __webpack_require__(6)(nga, admin);
 
 	  nga.configure(admin);
 
 	  admin.menu(nga.menu().addChild(nga.menu(clients).icon('<span class="glyphicon glyphicon-user"></span>')));
-	}]).factory('serializeParams', [() => {
-	  const serializer = {
-	    request(config) {
-	      const paramSerializer = param => param;
-	      const params = JSON.stringify(config.params) || {};
-	      return Object.assign({}, config, { paramSerializer, params });
+	}]).factory('serializeParams', [function () {
+	  var serializer = {
+	    request: function request(config) {
+	      var paramSerializer = function paramSerializer(param) {
+	        return param;
+	      };
+	      var params = JSON.stringify(config.params) || {};
+	      return Object.assign({}, config, { paramSerializer: paramSerializer, params: params });
 	    }
 	  };
 
 	  return serializer;
-	}]).config(['$httpProvider', $httpProvider => $httpProvider.interceptors.push('serializeParams')]).config(['RestangularProvider', RestangularProvider => {
-	  RestangularProvider.addFullRequestInterceptor((element, operation, what, url, headers, params) => {
+	}]).config(['$httpProvider', function ($httpProvider) {
+	  return $httpProvider.interceptors.push('serializeParams');
+	}]).config(['RestangularProvider', function (RestangularProvider) {
+	  RestangularProvider.addFullRequestInterceptor(function (element, operation, what, url, headers, params) {
 	    if (operation === 'getList') {
-	      const dir = params._sortDir === 'DESC' ? -1 : 1;
-	      const sort = {};
+	      var dir = params._sortDir === 'DESC' ? -1 : 1;
+	      var sort = {};
 
 	      params.$skip = (params._page - 1) * params._perPage;
 	      params.$limit = params._perPage;
@@ -99,7 +107,7 @@
 	    }
 
 	    if (operation === 'getList' && params._filters) {
-	      Object.keys(params._filters).reduce((acc, filter) => {
+	      Object.keys(params._filters).reduce(function (acc, filter) {
 	        if (filter === 'id') {
 	          acc[filter] = {
 	            $in: params._filters[filter]
@@ -118,9 +126,11 @@
 	      delete params._filters;
 	    }
 
-	    return { params };
+	    return { params: params };
 	  });
 	}]);
+
+	__webpack_require__(7)(app);
 
 /***/ },
 /* 3 */
@@ -244,22 +254,44 @@
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	const graphTemplate = __webpack_require__(5);
+	'use strict';
 
-	module.exports = (nga, admin) => {
-	  const contact = nga.entity('clients');
+	module.exports = function (nga, admin) {
+	  var edges = nga.entity('edges');
 
-	  const fields = [nga.field('firstName').validation({
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('clientId').cssClasses('hidden').label('')];
+
+	  edges.listView().fields([nga.field('id')].concat(fields)).filters(fields);
+
+	  edges.creationView().fields(fields);
+
+	  edges.editionView().fields(fields);
+
+	  admin.addEntity(edges);
+
+	  return edges;
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (nga, admin) {
+	  var contact = nga.entity('clients');
+
+	  var fields = [nga.field('firstName').validation({
 	    required: true
-	  }), nga.field('lastName'), nga.field('description', 'text'), nga.field('graph').template(graphTemplate)];
+	  }), nga.field('lastName')];
 
-	  contact.listView().fields([nga.field('id'), ...fields]).filters(fields);
+	  contact.listView().fields([nga.field('id')].concat(fields)).filters(fields);
 
 	  contact.creationView().fields(fields);
 
-	  contact.editionView().fields(fields);
+	  contact.editionView().fields([].concat(fields, [nga.field('description', 'text'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button></span>'), nga.field('').label('Graph').template('<graph clientid="{{ entry.values.id }}"/>')]));
 
 	  admin.addEntity(contact);
 
@@ -267,93 +299,117 @@
 	};
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
-	module.exports = `
-	      <style>
-	        #graph-container {
-	          height: 600px;
-	        }
-	      </style>
+	'use strict';
 
-	      <div id="graph-container"></div>
-	      <div id="sidebar">
-	        <input type="button" name="" id="button" value="add shit" />
-	      </div>
-	      <script>
-	      /**
-	       * This example shows how to use the dragNodes plugin.
-	       */
-	      var i,
-	          s,
-	          N = 10,
-	          E = 500,
-	          g = {
-	            nodes: [],
-	            edges: []
-	          };
+	module.exports = function (nga, admin) {
+	  var node = nga.entity('nodes');
 
-	      // Generate a random graph:
-	      function randomNode(i){
-	        return {
-	          id: 'n' + i,
-	          label: 'Node ' + i,
-	          x: Math.random(),
-	          y: Math.random(),
-	          size: Math.random(),
-	          color: '#666'
+	  var fields = [nga.field('name'), nga.field('type', 'choice').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').label('Strength').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('clientId').cssClasses('hidden').label('')];
+
+	  node.listView().fields([nga.field('id')].concat(fields)).filters(fields);
+
+	  node.creationView().fields(fields);
+
+	  node.editionView().fields(fields);
+
+	  admin.addEntity(node);
+
+	  return node;
+	};
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (app) {
+	  app.directive('graph', ['$http', function ($http) {
+	    var directive = {
+	      restrict: 'E',
+	      scope: {
+	        //@ reads the attribute value,
+	        //= provides two-way binding,
+	        //& works with functions
+	        clientid: '@'
+	      },
+	      link: function link(scope, element) {
+	        var clientid = scope.clientid;
+
+	        element.css({
+	          height: '600px',
+	          display: 'block'
+	        });
+
+	        var g = {
+	          nodes: [],
+	          edges: []
 	        };
-	      }
 
-	      for (i = 0; i < N; i++)
-	        g.nodes.push(randomNode(i));
+	        var s = new sigma({
+	          graph: g,
+	          container: 'graph-{{clientid}}',
+	          settings: {
+	            defaultNodeColor: '#ff0000',
+	            labelThreshold: 4
+	          }
+	        });
 
-	      function randomEdge(i) {
-	        return {
-	          id: 'e' + i,
-	          source: 'n' + (Math.random() * N | 0),
-	          target: 'n' + (Math.random() * N | 0),
-	          size: Math.random(),
-	          color: '#ccc'
-	        };
-	      }
-	      for (i = 0; i < E; i++)
-	        g.edges.push(randomEdge(i));
-	      // sigma.renderers.def = sigma.renderers.canvas
-	      // Instantiate sigma:
-	      s = new sigma({
-	        graph: g,
-	        container: 'graph-container'
-	      });
+	        Promise.all([$http.get('/nodes?clientId=' + clientid), $http.get('/edges?clientId=' + clientid)]).then(function (resp) {
+	          var resp0 = resp[0].data;
+	          var edges = resp[1].data;
 
-	      // Initialize the dragNodes plugin:
-	      var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+	          var nodes = resp0.map(function (node) {
+	            if (!node.x && !node.y) {
+	              node.x = Math.random();
+	              node.y = Math.random();
+	            }
+	            return node;
+	          });
 
-	      dragListener.bind('startdrag', function(event) {
-	        console.log(event);
-	      });
-	      dragListener.bind('drag', function(event) {
-	        console.log(event);
-	      });
-	      dragListener.bind('drop', function(event) {
-	        console.log(event);
-	      });
-	      dragListener.bind('dragend', function(event) {
-	        console.log(event);
-	      });
+	          nodes.forEach(function (node) {
+	            return s.graph.addNode(node);
+	          });
+	          edges.forEach(function (edge) {
+	            return s.graph.addEdge(edge);
+	          });
+	          s.refresh();
+	        });
+	        var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
 
+	        dragListener.bind('startdrag', function (event) {
+	          console.log(event);
+	        });
 
-	      var button = document.getElementById('button');
+	        dragListener.bind('drag', function (event) {
+	          console.log(event);
+	        });
 
-	      button.addEventListener('click', function(event) {
-	        var len = s.graph.nodes().length;
-	        s.graph.addNode(randomNode(len));
+	        dragListener.bind('drop', function (event) {
+	          console.log(event);
+	        });
 
-	        s.refresh();
-	      });
-	      </script>
-	`;
+	        dragListener.bind('dragend', function (event) {
+	          var node = event.data.node;
+
+	          console.log(event);
+	          $http.put('/nodes/' + node.id, node);
+	        });
+
+	        element.on('$destroy', function () {
+	          return s.graph.clear();
+	        });
+	      },
+
+	      template: '<div id="graph-{{clientid}}" style="height: 100%;"></div>'
+	    };
+
+	    return directive;
+	  }]);
+	};
 
 /***/ }
 /******/ ]);
