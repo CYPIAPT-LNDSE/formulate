@@ -17,7 +17,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('frequency', 'choice')
       .label('Frequency')
       .choices([
@@ -26,7 +27,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('duration', 'choice')
       .label('Duration')
       .choices([
@@ -35,7 +37,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('modifiability', 'choice')
       .label('Modifiability')
       .choices([
@@ -44,7 +47,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('clientAgreement', 'choice')
       .label('Client Agreement')
       .choices([
@@ -53,7 +57,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('clinicianAgreement', 'choice')
       .label('Clinician Agreement')
       .choices([
@@ -62,7 +67,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('MDTAgreement', 'choice')
       .label('MDT Agreement')
       .choices([
@@ -71,7 +77,8 @@ module.exports = (nga, admin) => {
         { value: '2', label: '3' },
         { value: '2.5', label: '4' },
         { value: '3', label: '5' },
-      ]),
+      ])
+      .defaultValue(2),
     nga.field('description'),
     nga.field('clientId')
       .cssClasses('hidden')
@@ -90,7 +97,6 @@ module.exports = (nga, admin) => {
       },
     ]);
 
-
   node
     .editionView()
     .fields(fields)
@@ -102,7 +108,6 @@ module.exports = (nga, admin) => {
         return false;
       },
     ]);
-
 
   admin
     .addEntity(node);
