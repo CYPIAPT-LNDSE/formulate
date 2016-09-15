@@ -37,3 +37,11 @@ body {
 
 .form-control {
   height: 40px; }
+
+#create-view.ng-admin-entity-nodes .form-field.form-group {
+  float: left;
+  margin-right: 5%;
+  width: 40%; }
+  #create-view.ng-admin-entity-nodes .form-field.form-group .control-label {
+    text-align: left;
+    width: 100%; }
