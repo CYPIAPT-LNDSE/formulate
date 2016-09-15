@@ -25,16 +25,14 @@ module.exports = (nga, admin) => {
   ];
 
   edges
-    .listView()
-    .fields([
-      nga.field('id'),
-      ...fields,
-    ])
-    .filters(fields);
+    .creationView()
+    .fields(fields)
+    .actions(['back']);
 
-  edges.creationView().fields(fields);
-
-  edges.editionView().fields(fields);
+  edges
+    .editionView()
+    .fields(fields)
+    .actions(['back']);
 
   admin
     .addEntity(edges);
