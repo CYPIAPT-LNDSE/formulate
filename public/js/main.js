@@ -108,6 +108,11 @@
 
 	    if (operation === 'getList' && params._filters) {
 	      Object.keys(params._filters).reduce(function (acc, filter) {
+	        if (filter === 'clientId') {
+	          acc[filter] = params._filters[filter];
+	          return acc;
+	        }
+
 	        if (filter === 'id') {
 	          acc[filter] = {
 	            $in: params._filters[filter]
@@ -261,9 +266,14 @@
 	module.exports = function (nga, admin) {
 	  var edges = nga.entity('edges');
 
-	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
 
-	  edges.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  edges.creationView().fields(fields).actions(['back']).prepare(['entry', 'view', function (entry, view) {
+	    var clientId = entry.values.clientId;
+
+	    view._fields[0]._permanentFilters = { clientId: clientId };
+	    view._fields[1]._permanentFilters = { clientId: clientId };
+	  }]).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;

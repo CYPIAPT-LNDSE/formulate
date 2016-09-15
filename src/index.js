@@ -51,6 +51,11 @@ const app = angular.module('formulationTool', ['ng-admin'])
 
         if (operation === 'getList' && params._filters) {
           Object.keys(params._filters).reduce((acc, filter) => {
+            if (filter === 'clientId') {
+              acc[filter] = params._filters[filter];
+              return acc;
+            }
+
             if (filter === 'id') {
               acc[filter] = {
                 $in: params._filters[filter],
