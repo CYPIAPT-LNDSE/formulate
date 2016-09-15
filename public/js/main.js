@@ -263,9 +263,17 @@
 
 	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
 
-	  edges.creationView().fields(fields).actions(['back']);
+	  edges.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	    progression.done();
+	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+	    return false;
+	  }]);
 
-	  edges.editionView().fields(fields).actions(['back']);
+	  edges.editionView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	    progression.done();
+	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+	    return false;
+	  }]);
 
 	  admin.addEntity(edges);
 

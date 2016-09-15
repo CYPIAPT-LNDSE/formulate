@@ -28,12 +28,26 @@ module.exports = (nga, admin) => {
   edges
     .creationView()
     .fields(fields)
-    .actions(['back']);
+    .actions(['back'])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
   edges
     .editionView()
     .fields(fields)
-    .actions(['back']);
+    .actions(['back'])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
   admin
     .addEntity(edges);
