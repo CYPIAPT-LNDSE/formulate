@@ -81,7 +81,7 @@ module.exports = (nga, admin) => {
   node
     .listView()
     .fields([
-      nga.field('id'),
+      nga.field('name').isDetailLink(true),
       ...fields,
     ])
     .filters(fields);

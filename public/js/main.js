@@ -263,7 +263,7 @@
 
 	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('clientId').cssClasses('hidden').label('')];
 
-	  edges.listView().fields([nga.field('id')].concat(fields)).filters(fields);
+	  edges.listView().fields([nga.field('connection').isDetailLink(true)].concat(fields)).filters(fields);
 
 	  edges.creationView().fields(fields);
 
@@ -283,11 +283,11 @@
 	module.exports = function (nga, admin) {
 	  var contact = nga.entity('clients');
 
-	  var fields = [nga.field('firstName').validation({
+	  var fields = [nga.field('firstName').label('First Name').validation({
 	    required: true
-	  }), nga.field('lastName')];
+	  }), nga.field('lastName').label('Last Name')];
 
-	  contact.listView().fields([nga.field('id')].concat(fields)).filters(fields);
+	  contact.listView().fields([nga.field('fullName').isDetailLink(true).label('Full Name')].concat(fields)).filters(fields);
 
 	  contact.creationView().fields(fields);
 
@@ -309,7 +309,7 @@
 
 	  var fields = [nga.field('name'), nga.field('type', 'choice').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').label('Intensity').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('frequency', 'choice').label('Frequency').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('duration', 'choice').label('Duration').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('modifiability', 'choice').label('Modifiability').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('clientAgreement', 'choice').label('Client Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('clinicianAgreement', 'choice').label('Clinician Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('MDTAgreement', 'choice').label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]), nga.field('description'), nga.field('clientId').cssClasses('hidden').label('')];
 
-	  node.listView().fields([nga.field('id')].concat(fields)).filters(fields);
+	  node.listView().fields([nga.field('name').isDetailLink(true)].concat(fields)).filters(fields);
 
 	  node.creationView().fields(fields);
 

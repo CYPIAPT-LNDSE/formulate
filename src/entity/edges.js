@@ -27,7 +27,7 @@ module.exports = (nga, admin) => {
   edges
     .listView()
     .fields([
-      nga.field('id'),
+      nga.field('connection').isDetailLink(true),
       ...fields,
     ])
     .filters(fields);

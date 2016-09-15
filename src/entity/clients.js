@@ -3,16 +3,20 @@ module.exports = (nga, admin) => {
 
   const fields = [
     nga.field('firstName')
+      .label('First Name')
       .validation({
         required: true,
       }),
-    nga.field('lastName'),
+    nga.field('lastName')
+      .label('Last Name'),
   ];
 
   contact
     .listView()
     .fields([
-      nga.field('id'),
+      nga.field('fullName')
+        .isDetailLink(true)
+        .label('Full Name'),
       ...fields,
     ])
     .filters(fields);

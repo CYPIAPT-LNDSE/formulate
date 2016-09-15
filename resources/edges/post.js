@@ -1,0 +1,1 @@
+this.connection = this.source + ' to ' + this.target;

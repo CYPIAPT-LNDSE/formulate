@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "strengthOfRelationship",
 			"order": 3
+		},
+		"connection": {
+			"name": "connection",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "connection",
+			"order": 4
 		}
 	}
 }
