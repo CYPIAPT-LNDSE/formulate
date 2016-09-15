@@ -17,21 +17,13 @@
 			"id": "name",
 			"order": 1
 		},
-		"description": {
-			"name": "description",
-			"type": "string",
-			"typeLabel": "string",
-			"required": false,
-			"id": "description",
-			"order": 2
-		},
 		"type": {
 			"name": "type",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "type",
-			"order": 3
+			"order": 2
 		},
 		"size": {
 			"name": "size",
@@ -39,7 +31,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "size",
-			"order": 4
+			"order": 3
 		},
 		"x": {
 			"name": "x",
@@ -47,7 +39,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "x",
-			"order": 5
+			"order": 4
 		},
 		"y": {
 			"name": "y",
@@ -55,7 +47,63 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "y",
+			"order": 5
+		},
+		"frequency": {
+			"name": "frequency",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "frequency",
 			"order": 6
+		},
+		"duration": {
+			"name": "duration",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "duration",
+			"order": 7
+		},
+		"modifiability": {
+			"name": "modifiability",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "modifiability",
+			"order": 8
+		},
+		"clientAgreement": {
+			"name": "clientAgreement",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "clientAgreement",
+			"order": 9
+		},
+		"clinicianAgreement": {
+			"name": "clinicianAgreement",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "clinicianAgreement",
+			"order": 10
+		},
+		"MDTAgreement": {
+			"name": "MDTAgreement",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "MDTAgreement",
+			"order": 11
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 12
 		}
 	}
 }
