@@ -1,0 +1,42 @@
+.form-signin-heading {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 65px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $color-primary-4;
+  font-weight: 800;
+}
+
+.form-signin {
+  padding-top: 30px;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+.sign-in-btn {
+  background-color: $color-primary-3;
+  color: $color-background;
+  font-size: 18px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sign-in-btn:hover {
+  background-color: $color-primary-0;
+  color: $color-background;
+};
+
+.logo-container {
+  width: 100%;
+  padding-top: 2em;
+}
+
+.logo {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control {
+  height: 40px;
+}
