@@ -86,24 +86,28 @@ module.exports = (nga, admin) => {
   ];
 
   node
-    .listView()
-    .fields([
-      nga.field('name')
-        .isDetailLink(true),
-      nga.field('type'),
-      nga.field('size'),
-      nga.field('frequency'),
-      nga.field('duration'),
-      nga.field('modifiability'),
-      nga.field('clientAgreement'),
-      nga.field('clinicianAgreement'),
-      nga.field('MDTAgreement'),
-    ])
-    .filters(fields);
+    .creationView()
+    .fields(fields)
+    .actions(['back'])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
-  node.creationView().fields(fields);
-
-  node.editionView().fields(fields);
+  node
+    .editionView()
+    .fields(fields)
+    .actions(['back'])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
   admin
     .addEntity(node);
