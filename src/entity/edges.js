@@ -36,8 +36,8 @@ module.exports = (nga, admin) => {
       view._fields[0]._permanentFilters = { clientId };
       view._fields[1]._permanentFilters = { clientId };
     }])
-    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
-      (progression, route, $state, entry) => {
+    .onSubmitSuccess(['progression', '$state', 'entry',
+      (progression, $state, entry) => {
         progression.done();
         $state.go('edit', { entity: 'clients', id: entry.values.clientId });
         return false;
@@ -49,8 +49,8 @@ module.exports = (nga, admin) => {
     .title('Edit: {{ entry.values.connection }}')
     .fields(fields)
     .actions(['back'])
-    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
-      (progression, route, $state, entry) => {
+    .onSubmitSuccess(['progression', '$state', 'entry',
+      (progression, $state, entry) => {
         progression.done();
         $state.go('edit', { entity: 'clients', id: entry.values.clientId });
         return false;

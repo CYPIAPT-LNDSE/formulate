@@ -38,7 +38,7 @@ module.exports = app => {
           $http.get(`/edges?clientId=${clientid}`),
         ]).then(resp => {
           const resp0 = resp[0].data;
-          const edges = resp[1].data;
+          const resp1 = resp[1].data;
 
           const nodes = resp0.map(node => {
             if (!node.x && !node.y) {
@@ -46,6 +46,11 @@ module.exports = app => {
               node.y = Math.random();
             }
             return node;
+          });
+
+          const edges = resp1.map(edge => {
+            edge.type = 'arrow';
+            return edge;
           });
 
           nodes.forEach(node => s.graph.addNode(node));

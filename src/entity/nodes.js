@@ -135,8 +135,8 @@ module.exports = (nga, admin) => {
     .creationView()
     .fields(fields)
     .actions(['back'])
-    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
-      (progression, route, $state, entry) => {
+    .onSubmitSuccess(['progression', '$state', 'entry',
+      (progression, $state, entry) => {
         progression.done();
         $state.go('edit', { entity: 'clients', id: entry.values.clientId });
         return false;
@@ -148,8 +148,8 @@ module.exports = (nga, admin) => {
     .title('Edit: {{ entry.values.name }}')
     .fields(fields)
     .actions(['back'])
-    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
-      (progression, route, $state, entry) => {
+    .onSubmitSuccess(['progression', '$state', 'entry',
+      (progression, $state, entry) => {
         progression.done();
         $state.go('edit', { entity: 'clients', id: entry.values.clientId });
         return false;
