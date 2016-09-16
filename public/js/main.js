@@ -266,7 +266,7 @@
 	module.exports = function (nga, admin) {
 	  var edges = nga.entity('edges');
 
-	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('size', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  edges.creationView().fields(fields).actions(['back']).prepare(['entry', 'view', function (entry, view) {
 	    var clientId = entry.values.clientId;
@@ -307,7 +307,7 @@
 
 	  contact.creationView().fields(fields);
 
-	  contact.editionView().title('{{ entry.values.fullName }}').fields([nga.field('').label('').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Relations', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('source'), nga.field('target'), nga.field('size').label('Strength')]).listActions(['edit', 'delete']), nga.field('description', 'text').label('Notes')]);
+	  contact.editionView().title('{{ entry.values.fullName }}').fields([nga.field('').label('').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Relations', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('connection'), nga.field('size').label('Strength')]).listActions(['edit', 'delete']), nga.field('description', 'text').label('Notes')]);
 
 	  admin.addEntity(contact);
 
@@ -392,7 +392,9 @@
 	          container: 'graph-{{clientid}}',
 	          settings: {
 	            defaultNodeColor: '#ff0000',
-	            labelThreshold: 4
+	            labelThreshold: 4,
+	            maxEdgeSize: 3,
+	            maxNodeSize: 16
 	          }
 	        });
 

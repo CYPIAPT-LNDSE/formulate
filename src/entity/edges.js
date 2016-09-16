@@ -12,7 +12,7 @@ module.exports = (nga, admin) => {
       .targetField(nga.field('name'))
       .remoteComplete(true)
       .validation({ required: true }),
-    nga.field('strengthOfRelationship', 'choice')
+    nga.field('size', 'choice')
       .label('Strength of Relationship')
       .choices([
         { value: '1', label: '1' },
