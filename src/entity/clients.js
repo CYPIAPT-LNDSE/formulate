@@ -28,7 +28,7 @@ module.exports = (nga, admin) => {
     .title('{{ entry.values.fullName }}')
     .fields([
     nga.field('')
-      .label('Graph')
+      .label('')
       .template('<graph clientid="{{ entry.values.id }}"/>'),
     nga.field('').label('')
       .template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'),
