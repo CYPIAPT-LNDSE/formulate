@@ -27,14 +27,14 @@ module.exports = (nga, admin) => {
     .editionView()
     .title('{{ entry.values.fullName }}')
     .fields([
-    nga.field('')
+      nga.field('')
       .label('')
       .template('<graph clientid="{{ entry.values.id }}"/>'),
-    nga.field('').label('')
-      .template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'),
-    nga.field('').label('')
+      nga.field('').label('')
+      .template('<ma-create-button entity-name="nodes" size="sm" label="Create variable" default-values="{ clientId: entry.values.id }"></ma-create-button>'),
+      nga.field('').label('')
       .template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'),
-    nga.field('Variables', 'referenced_list')
+      nga.field('Variables', 'referenced_list')
       .targetEntity(nga.entity('nodes'))
       .targetReferenceField('clientId')
       .sortField('type')
@@ -46,7 +46,7 @@ module.exports = (nga, admin) => {
           .label('Intensity'),
       ])
       .listActions(['edit', 'delete']),
-    nga.field('Relations', 'referenced_list')
+      nga.field('Connections', 'referenced_list')
       .targetEntity(nga.entity('edges'))
       .targetReferenceField('clientId')
       .targetFields([
@@ -55,9 +55,9 @@ module.exports = (nga, admin) => {
           .label('Strength'),
       ])
       .listActions(['edit', 'delete']),
-    nga.field('description', 'text')
+      nga.field('description', 'text')
       .label('Notes'),
-  ]);
+    ]);
 
   admin
     .addEntity(contact);
