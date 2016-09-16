@@ -21,10 +21,10 @@ module.exports = (nga, admin) => {
       .label('Intensity')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('frequency', 'choice')
@@ -37,10 +37,10 @@ module.exports = (nga, admin) => {
       .label('Frequency')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('duration', 'choice')
@@ -53,10 +53,10 @@ module.exports = (nga, admin) => {
       .label('Duration')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('modifiability', 'choice')
@@ -69,10 +69,10 @@ module.exports = (nga, admin) => {
       .label('Modifiability')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('clientAgreement', 'choice')
@@ -85,10 +85,10 @@ module.exports = (nga, admin) => {
       .label('Client Agreement')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('clinicianAgreement', 'choice')
@@ -101,10 +101,10 @@ module.exports = (nga, admin) => {
       .label('Clinician Agreement')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('MDTAgreement', 'choice')
@@ -117,10 +117,10 @@ module.exports = (nga, admin) => {
       .label('MDT Agreement')
       .choices([
         { value: '1', label: '1' },
-        { value: '1.5', label: '2' },
-        { value: '2', label: '3' },
-        { value: '2.5', label: '4' },
-        { value: '3', label: '5' },
+        { value: '1.5', label: '1.5' },
+        { value: '2', label: '2' },
+        { value: '2.5', label: '2.5' },
+        { value: '3', label: '3' },
       ])
       .defaultValue(2),
     nga.field('description', 'text')

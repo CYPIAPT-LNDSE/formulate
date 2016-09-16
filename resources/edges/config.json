@@ -25,12 +25,12 @@
 			"id": "target",
 			"order": 2
 		},
-		"strengthOfRelationship": {
-			"name": "strengthOfRelationship",
+		"size": {
+			"name": "size",
 			"type": "number",
 			"typeLabel": "number",
 			"required": false,
-			"id": "strengthOfRelationship",
+			"id": "size",
 			"order": 3
 		}
 	}
