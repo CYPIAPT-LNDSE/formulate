@@ -314,7 +314,7 @@
 
 	  contact.creationView().fields(fields);
 
-	  contact.editionView().title('{{ entry.values.fullName }}').fields([nga.field('').label('').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create variable" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Connections', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('connection'), nga.field('size').label('Strength')]).listActions(['edit', 'delete']), nga.field('description', 'text').label('Notes')]);
+	  contact.editionView().title('{{ entry.values.fullName }}').fields([nga.field('graph').label('').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('buttons').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create variable" default-values="{ clientId: entry.values.id }"></ma-create-button><ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Connections', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('connection'), nga.field('size').label('Strength')]).listActions(['edit', 'delete']), nga.field('description', 'text').label('Notes')]);
 
 	  admin.addEntity(contact);
 
@@ -330,21 +330,21 @@
 	module.exports = function (nga, admin) {
 	  var node = nga.entity('nodes');
 
-	  var fields = [nga.field('name').cssClasses('name_class'), nga.field('type', 'choice').cssClasses('type_class').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').cssClasses('intensity_class').cssClasses(function (entry) {
+	  var fields = [nga.field('name'), nga.field('type', 'choice').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Intensity').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('frequency', 'choice').cssClasses('frequency_class').cssClasses(function (entry) {
+	  }).label('Intensity').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('frequency', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Frequency').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('duration', 'choice').cssClasses('duration_class').cssClasses(function (entry) {
+	  }).label('Frequency').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('duration', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Duration').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('modifiability', 'choice').cssClasses('modifiability_class').cssClasses(function (entry) {
+	  }).label('Duration').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('modifiability', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Modifiability').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientAgreement', 'choice').cssClasses('clientAgreement_class').cssClasses(function (entry) {
+	  }).label('Modifiability').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientAgreement', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Client Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clinicianAgreement', 'choice').cssClasses('clinicianAgreement_class').cssClasses(function (entry) {
+	  }).label('Client Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clinicianAgreement', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && (entry.values.type === 'symptom' || entry.values.type === 'causal') && 'hidden';
-	  }).label('Clinician Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('MDTAgreement', 'choice').cssClasses('MDTAgreement_class').cssClasses(function (entry) {
+	  }).label('Clinician Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('MDTAgreement', 'choice').cssClasses(function (entry) {
 	    return entry && entry.values && (entry.values.type === 'symptom' || entry.values.type === 'causal') && 'hidden';
-	  }).label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('description', 'text').cssClasses('description_class'), nga.field('clientId').cssClasses('hidden').label('')];
+	  }).label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('description', 'text'), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  node.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', '$state', 'entry', function (progression, $state, entry) {
 	    progression.done();
