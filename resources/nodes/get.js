@@ -2,7 +2,7 @@ this.label = this.name;
 
 switch (this.type) {
     case 'symptom':
-        this.color = '#00ff00';
+        this.color = '#FF0000';
         this.size = this.size || 2;
         break;
     case 'causal':
@@ -10,7 +10,7 @@ switch (this.type) {
         this.size = this.size || 1;
         break;
     case 'treatment':
-        this.color = '#ff00ff';
+        this.color = '#00ff00';
         this.size = this.size || 1;
         break;
     default:
