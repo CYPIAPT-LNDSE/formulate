@@ -25,10 +25,8 @@ module.exports = (nga, admin) => {
 
   contact
     .editionView()
-    .title('Edit: {{ entry.values.fullName }}')
+    .title('{{ entry.values.fullName }}')
     .fields([
-    ...fields,
-    nga.field('description', 'text'),
     nga.field('')
       .label('Graph')
       .template('<graph clientid="{{ entry.values.id }}"/>'),
@@ -58,6 +56,8 @@ module.exports = (nga, admin) => {
           .label('Strength'),
       ])
       .listActions(['edit', 'delete']),
+    nga.field('description', 'text')
+      .label('Notes'),
   ]);
 
   admin
