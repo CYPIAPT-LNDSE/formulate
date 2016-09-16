@@ -1,12 +1,14 @@
-#create-view.ng-admin-entity-nodes {
-  .form-field.form-group {
-    float: left;
-    margin-right: 5%;
-    width: 40%;
+@media screen and (min-width: 800px) {
+  .ng-admin-entity-nodes {
+    .form-field.form-group {
+      float: left;
+      margin-right: 5%;
+      width: 40%;
 
-    .control-label{
-      text-align: left;
-      width: 100%;
+      .control-label{
+        text-align: left;
+        width: 100%;
+      }
     }
   }
 }

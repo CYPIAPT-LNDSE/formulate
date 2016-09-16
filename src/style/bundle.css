@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700|Source+Sans+Pro:200,300,400,600,700';
+@import "https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700|Source+Sans+Pro:200,300,400,600,700";
 body {
   background-color: #ffffff; }
 
@@ -38,10 +38,13 @@ body {
 .form-control {
   height: 40px; }
 
-#create-view.ng-admin-entity-nodes .form-field.form-group {
-  float: left;
-  margin-right: 5%;
-  width: 40%; }
-  #create-view.ng-admin-entity-nodes .form-field.form-group .control-label {
-    text-align: left;
-    width: 100%; }
+@media screen and (min-width: 800px) {
+  .ng-admin-entity-nodes .form-field.form-group {
+    float: left;
+    margin-right: 5%;
+    width: 40%; }
+    .ng-admin-entity-nodes .form-field.form-group .control-label {
+      text-align: left;
+      width: 100%; } }
+
+/*# sourceMappingURL=bundle.css.map */
