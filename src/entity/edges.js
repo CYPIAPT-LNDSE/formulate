@@ -5,10 +5,12 @@ module.exports = (nga, admin) => {
     nga.field('source', 'reference')
       .targetEntity(nga.entity('nodes'))
       .targetField(nga.field('name'))
+      .remoteComplete(true)
       .validation({ required: true }),
     nga.field('target', 'reference')
       .targetEntity(nga.entity('nodes'))
       .targetField(nga.field('name'))
+      .remoteComplete(true)
       .validation({ required: true }),
     nga.field('strengthOfRelationship', 'choice')
       .label('Strength of Relationship')
@@ -28,12 +30,32 @@ module.exports = (nga, admin) => {
   edges
     .creationView()
     .fields(fields)
-    .actions(['back']);
+    .actions(['back'])
+    .prepare(['entry', 'view', (entry, view) => {
+      const { clientId } = entry.values;
+      view._fields[0]._permanentFilters = { clientId };
+      view._fields[1]._permanentFilters = { clientId };
+    }])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
   edges
     .editionView()
+    .title('Edit: {{ entry.values.connection }}')
     .fields(fields)
-    .actions(['back']);
+    .actions(['back'])
+    .onSubmitSuccess(['progression', 'route', '$state', 'entry',
+      (progression, route, $state, entry) => {
+        progression.done();
+        $state.go('edit', { entity: 'clients', id: entry.values.clientId });
+        return false;
+      },
+    ]);
 
   admin
     .addEntity(edges);
