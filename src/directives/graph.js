@@ -29,6 +29,7 @@ module.exports = app => {
             defaultNodeColor: '#ff0000',
             labelThreshold: 4,
             maxEdgeSize: 3,
+            maxNodeSize: 16,
           },
         });
 
