@@ -266,7 +266,7 @@
 	module.exports = function (nga, admin) {
 	  var edges = nga.entity('edges');
 
-	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  edges.creationView().fields(fields).actions(['back']).prepare(['entry', 'view', function (entry, view) {
 	    var clientId = entry.values.clientId;
@@ -325,19 +325,19 @@
 
 	  var fields = [nga.field('name').cssClasses('name_class'), nga.field('type', 'choice').cssClasses('type_class').choices([{ value: 'symptom', label: 'Symptom' }, { value: 'causal', label: 'Causal Factor' }, { value: 'treatment', label: 'Treatments' }]), nga.field('size', 'choice').cssClasses('intensity_class').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Intensity').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('frequency', 'choice').cssClasses('frequency_class').cssClasses(function (entry) {
+	  }).label('Intensity').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('frequency', 'choice').cssClasses('frequency_class').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Frequency').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('duration', 'choice').cssClasses('duration_class').cssClasses(function (entry) {
+	  }).label('Frequency').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('duration', 'choice').cssClasses('duration_class').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Duration').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('modifiability', 'choice').cssClasses('modifiability_class').cssClasses(function (entry) {
+	  }).label('Duration').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('modifiability', 'choice').cssClasses('modifiability_class').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Modifiability').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clientAgreement', 'choice').cssClasses('clientAgreement_class').cssClasses(function (entry) {
+	  }).label('Modifiability').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientAgreement', 'choice').cssClasses('clientAgreement_class').cssClasses(function (entry) {
 	    return entry && entry.values && entry.values.type === 'treatment' && 'hidden';
-	  }).label('Client Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('clinicianAgreement', 'choice').cssClasses('clinicianAgreement_class').cssClasses(function (entry) {
+	  }).label('Client Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clinicianAgreement', 'choice').cssClasses('clinicianAgreement_class').cssClasses(function (entry) {
 	    return entry && entry.values && (entry.values.type === 'symptom' || entry.values.type === 'causal') && 'hidden';
-	  }).label('Clinician Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('MDTAgreement', 'choice').cssClasses('MDTAgreement_class').cssClasses(function (entry) {
+	  }).label('Clinician Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('MDTAgreement', 'choice').cssClasses('MDTAgreement_class').cssClasses(function (entry) {
 	    return entry && entry.values && (entry.values.type === 'symptom' || entry.values.type === 'causal') && 'hidden';
-	  }).label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '2' }, { value: '2', label: '3' }, { value: '2.5', label: '4' }, { value: '3', label: '5' }]).defaultValue(2), nga.field('description', 'text').cssClasses('description_class'), nga.field('clientId').cssClasses('hidden').label('')];
+	  }).label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('description', 'text').cssClasses('description_class'), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  node.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
 	    progression.done();
