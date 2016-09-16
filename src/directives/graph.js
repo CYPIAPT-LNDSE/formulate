@@ -28,6 +28,7 @@ module.exports = app => {
           settings: {
             defaultNodeColor: '#ff0000',
             labelThreshold: 4,
+            maxEdgeSize: 3,
           },
         });
 

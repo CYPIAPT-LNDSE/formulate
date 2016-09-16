@@ -266,7 +266,7 @@
 	module.exports = function (nga, admin) {
 	  var edges = nga.entity('edges');
 
-	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('strengthOfRelationship', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
+	  var fields = [nga.field('source', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('target', 'reference').targetEntity(nga.entity('nodes')).targetField(nga.field('name')).remoteComplete(true).validation({ required: true }), nga.field('size', 'choice').label('Strength of Relationship').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('clientId').cssClasses('hidden').label('')];
 
 	  edges.creationView().fields(fields).actions(['back']).prepare(['entry', 'view', function (entry, view) {
 	    var clientId = entry.values.clientId;
@@ -392,7 +392,8 @@
 	          container: 'graph-{{clientid}}',
 	          settings: {
 	            defaultNodeColor: '#ff0000',
-	            labelThreshold: 4
+	            labelThreshold: 4,
+	            maxEdgeSize: 3
 	          }
 	        });
 
