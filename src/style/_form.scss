@@ -1,14 +1,32 @@
+.ng-admin-field-graph {
+  width: 100%;
+}
+
+.ng-admin-field-buttons {
+  margin: 0 0 2em;
+
+  a {
+    margin-right: 1em;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .ng-admin-entity-nodes {
     .form-field.form-group {
       float: left;
-      margin-right: 5%;
-      width: 40%;
+      width: 50%;
+    }
 
-      .control-label{
-        text-align: left;
-        width: 100%;
-      }
+    .ng-admin-entity-nodes .form-field.form-group .control-label {
+      text-align: left;
+      width: 100%;
+    }
+
+    .ng-admin-type-choice,
+    .ng-admin-type-string,
+    .ng-admin-field-description {
+      width: 90%;
     }
   }
+
 }
