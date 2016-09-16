@@ -50,8 +50,7 @@ module.exports = (nga, admin) => {
       .targetEntity(nga.entity('edges'))
       .targetReferenceField('clientId')
       .targetFields([
-        nga.field('source'),
-        nga.field('target'),
+        nga.field('connection'),
         nga.field('size')
           .label('Strength'),
       ])
