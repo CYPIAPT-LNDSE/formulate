@@ -273,13 +273,13 @@
 
 	    view._fields[0]._permanentFilters = { clientId: clientId };
 	    view._fields[1]._permanentFilters = { clientId: clientId };
-	  }]).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  }]).onSubmitSuccess(['progression', '$state', 'entry', function (progression, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;
 	  }]);
 
-	  edges.editionView().title('Edit: {{ entry.values.connection }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  edges.editionView().title('Edit: {{ entry.values.connection }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', '$state', 'entry', function (progression, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;
@@ -339,13 +339,13 @@
 	    return entry && entry.values && (entry.values.type === 'symptom' || entry.values.type === 'causal') && 'hidden';
 	  }).label('MDT Agreement').choices([{ value: '1', label: '1' }, { value: '1.5', label: '1.5' }, { value: '2', label: '2' }, { value: '2.5', label: '2.5' }, { value: '3', label: '3' }]).defaultValue(2), nga.field('description', 'text').cssClasses('description_class'), nga.field('clientId').cssClasses('hidden').label('')];
 
-	  node.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  node.creationView().fields(fields).actions(['back']).onSubmitSuccess(['progression', '$state', 'entry', function (progression, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;
 	  }]);
 
-	  node.editionView().title('Edit: {{ entry.values.name }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', 'route', '$state', 'entry', function (progression, route, $state, entry) {
+	  node.editionView().title('Edit: {{ entry.values.name }}').fields(fields).actions(['back']).onSubmitSuccess(['progression', '$state', 'entry', function (progression, $state, entry) {
 	    progression.done();
 	    $state.go('edit', { entity: 'clients', id: entry.values.clientId });
 	    return false;
@@ -400,7 +400,7 @@
 
 	        Promise.all([$http.get('/nodes?clientId=' + clientid), $http.get('/edges?clientId=' + clientid)]).then(function (resp) {
 	          var resp0 = resp[0].data;
-	          var edges = resp[1].data;
+	          var resp1 = resp[1].data;
 
 	          var nodes = resp0.map(function (node) {
 	            if (!node.x && !node.y) {
@@ -408,6 +408,11 @@
 	              node.y = Math.random();
 	            }
 	            return node;
+	          });
+
+	          var edges = resp1.map(function (edge) {
+	            edge.type = 'arrow';
+	            return edge;
 	          });
 
 	          nodes.forEach(function (node) {
