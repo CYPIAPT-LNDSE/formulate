@@ -307,7 +307,7 @@
 
 	  contact.creationView().fields(fields);
 
-	  contact.editionView().title('Edit: {{ entry.values.fullName }}').fields([].concat(fields, [nga.field('description', 'text'), nga.field('').label('Graph').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Relations', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('source'), nga.field('target'), nga.field('size').label('Strength')]).listActions(['edit', 'delete'])]));
+	  contact.editionView().title('{{ entry.values.fullName }}').fields([nga.field('').label('').template('<graph clientid="{{ entry.values.id }}"/>'), nga.field('').label('').template('<ma-create-button entity-name="nodes" size="sm" label="Create node" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('').label('').template('<ma-create-button entity-name="edges" size="sm" label="Create connection" default-values="{ clientId: entry.values.id }"></ma-create-button>'), nga.field('Variables', 'referenced_list').targetEntity(nga.entity('nodes')).targetReferenceField('clientId').sortField('type').targetFields([nga.field('name').isDetailLink(true), nga.field('type'), nga.field('size').label('Intensity')]).listActions(['edit', 'delete']), nga.field('Relations', 'referenced_list').targetEntity(nga.entity('edges')).targetReferenceField('clientId').targetFields([nga.field('source'), nga.field('target'), nga.field('size').label('Strength')]).listActions(['edit', 'delete']), nga.field('description', 'text').label('Notes')]);
 
 	  admin.addEntity(contact);
 
@@ -376,8 +376,10 @@
 	        var clientid = scope.clientid;
 
 	        element.css({
-	          height: '600px',
-	          display: 'block'
+	          height: '400px',
+	          display: 'block',
+	          border: '1px solid black',
+	          'background-color': '#F0F0F0'
 	        });
 
 	        var g = {

@@ -11,8 +11,10 @@ module.exports = app => {
       link(scope, element) {
         const { clientid } = scope;
         element.css({
-          height: '600px',
+          height: '400px',
           display: 'block',
+          border: '1px solid black',
+          'background-color': '#F0F0F0',
         });
 
         const g = {
