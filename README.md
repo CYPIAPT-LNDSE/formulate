@@ -36,7 +36,7 @@ $ sudo npm install -g deployd
 ### Clone the repo
 
 ```bash
-$ git clone https://github.com/gabrielperales/formulationTool.git && cd formulationTool
+$ git clone https://github.com/CYPIAPT-LNDSE/formulate.git && cd formulate
 ```
 
 ### Build the app, start the server and watch for changes
