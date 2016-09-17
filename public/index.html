@@ -24,7 +24,6 @@
         <input type="password" name="password" class="form-control" placeholder="Password" required>
       </div>
       <button class="btn btn-md btn-block sign-in-btn" class="button" id="login" type="submit">Sign in</button>
-      <button class="btn btn-md btn-block sign-in-btn" class="button" id="register" type="submit">Register</button>
     </form>
 
   </div>
@@ -32,7 +31,6 @@
   <script type="text/javascript" charset="utf-8">
   var form = document.querySelector('form');
   var login = document.getElementById('login');
-  var register = document.getElementById('register');
 
   var loginUser = function(username, password) {
     dpd
@@ -56,17 +54,6 @@
     loginUser(username, password);
   });
 
-  register.addEventListener('click', function(event) {
-    var username = form.username.value;
-    var password = form.password.value;
-    event.preventDefault();
-
-    dpd.users.post({username: username, password: password}, function(user, err) {
-      event.preventDefault();
-      if(err) return console.log(err);
-      loginUser(username, password);
-      });
-    });
   </script>
 </body>
 </html>
