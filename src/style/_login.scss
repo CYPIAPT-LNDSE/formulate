@@ -1,3 +1,12 @@
+.background{
+  display: block;
+  height: 100%;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 .form-signin-heading {
   text-align: center;
   padding-bottom: 15px;
@@ -7,23 +16,17 @@
   font-weight: 800;
 }
 
-.form-signin {
-  padding-top: 30px;
-  padding-left: 30%;
-  padding-right: 30%;
-}
-
 .sign-in-btn {
   background-color: $color-primary-3;
   color: $color-background;
   font-size: 18px;
   font-family: 'Source Sans Pro', sans-serif;
-}
 
-.sign-in-btn:hover {
-  background-color: $color-primary-0;
-  color: $color-background;
-};
+  &:hover {
+    background-color: $color-primary-0;
+    color: $color-background;
+  };
+}
 
 .logo-container {
   width: 100%;
@@ -39,4 +42,18 @@
 
 .form-control {
   height: 40px;
+}
+
+.form-signin {
+  padding-top: 30px;
+
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+}
+
+.test-user-credentials {
+  margin-top: 1.5em;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.4em;
 }

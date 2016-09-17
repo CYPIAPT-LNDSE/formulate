@@ -1,6 +1,17 @@
 @import "https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700|Source+Sans+Pro:200,300,400,600,700";
+html, body {
+  height: 100%; }
+
 body {
   background-color: #ffffff; }
+
+.background {
+  display: block;
+  height: 100%;
+  background-image: url("/assets/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
 
 .form-signin-heading {
   text-align: center;
@@ -10,20 +21,14 @@ body {
   color: #037C93;
   font-weight: 800; }
 
-.form-signin {
-  padding-top: 30px;
-  padding-left: 30%;
-  padding-right: 30%; }
-
 .sign-in-btn {
   background-color: #2E8898;
   color: #ffffff;
   font-size: 18px;
   font-family: 'Source Sans Pro', sans-serif; }
-
-.sign-in-btn:hover {
-  background-color: #5F97A2;
-  color: #ffffff; }
+  .sign-in-btn:hover {
+    background-color: #5F97A2;
+    color: #ffffff; }
 
 .logo-container {
   width: 100%;
@@ -37,6 +42,17 @@ body {
 
 .form-control {
   height: 40px; }
+
+.form-signin {
+  padding-top: 30px;
+  width: 100%;
+  max-width: 450px;
+  margin: auto; }
+
+.test-user-credentials {
+  margin-top: 1.5em;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.4em; }
 
 .ng-admin-field-graph {
   width: 100%; }
