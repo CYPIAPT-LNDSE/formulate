@@ -39,8 +39,42 @@ $ sudo npm install -g deployd
 $ git clone https://github.com/CYPIAPT-LNDSE/formulate.git && cd formulate
 ```
 
+### Enviroment variables
+This repo comes with a example file for configuring your enviroment variables.
+That file can be found in `example.config.env`. You have to copy that file and rename it with 
+the name `confiv.env`. Formulate server will try to find that file for loading those variables.
+
+- `MONGODB_URI` will be the uri where your mongodb database is hosted.
+- `PORT` will be the port where formulate server will be running.
+
+If Formulate server can't find `config.env` then it will use the default values and it will be running
+the server on the **port 8080** and it will try to connect with a mongodb database in `mongodb://localhost:27017`.
+
 ### Build the app, start the server and watch for changes
+You should have an mongodb server running
 
 ```bash
 $ npm run watch
 ```
+
+### Running the app for production
+You should have an mongodb server running
+
+```bash
+$ npm run build
+$ npm start
+```
+
+### Create default user
+The formulate server is based on [Deployd](https://github.com/deployd/deployd).
+That tool comes with a dashboard for managing your database. To go to that dashboard
+you will need a key, you can create one and see it with these commands:
+
+```bash
+$ ./node_modules/deployd/bin/dpd keygen # this will create a new key
+$ ./node_modules/deployd/bin/dpd showkey # this will show the key
+```
+
+Now you can go to `/dashboard` in your browser, and put that key in the dashboard login.
+There you will be able to go to the `users` collection and create your user.
+Once you have finish these steps, you will be able to log in formulate and try it.
