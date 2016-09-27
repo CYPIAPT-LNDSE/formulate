@@ -65,7 +65,7 @@ $ npm run build
 $ npm start
 ```
 
-### Create default user
+### Create the default user
 The formulate server is based on [Deployd](https://github.com/deployd/deployd).
 That tool comes with a dashboard for managing your database. To go to that dashboard
 you will need a key, you can create one and see it with these commands:
